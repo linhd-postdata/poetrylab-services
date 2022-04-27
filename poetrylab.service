@@ -1,0 +1,18 @@
+[Unit]
+Description=Poetrylab API Container
+Requires=docker.service
+After=docker.service
+# After=network.service
+# Wants=network-online.target
+
+[Service]
+Restart=always
+User=root
+Group=root
+ExecStart=/usr/bin/docker-compose -f /mnt/hdd/poetrylabV3/docker-compose.yml up
+ExecStop=/usr/bin/docker-compose -f /mnt/hdd/poetrylabV3/docker-compose.yml down
+
+[Install]
+# WantedBy=local.target
+WantedBy=multi-user.target
+
